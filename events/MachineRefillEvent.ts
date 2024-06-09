@@ -14,6 +14,10 @@ class MachineRefillEvent implements IEvent {
   type(): string {
     throw new Error("Method not implemented.");
   }
+
+  getRefillQuantity(): number {
+    return this._refill
+  }
 }
 
 export { MachineRefillEvent };

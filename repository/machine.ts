@@ -1,10 +1,16 @@
 import { Machine } from "../models";
 
 export class MachineRepository {
-  static _instance: MachineRepository;
+  private static _instance: MachineRepository;
 
   private machines: Machine[];
-  private constructor() {}
+  private constructor() {
+    this.machines = [
+      new Machine("001"),
+      new Machine("002"),
+      new Machine("003"),
+    ];
+  }
 
   public static get instance(): MachineRepository {
     if (!MachineRepository._instance) {
@@ -13,11 +19,7 @@ export class MachineRepository {
     return MachineRepository._instance;
   }
 
-  findById(id: string): Machine {
-    const machine = this.machines.find((m) => m.id === id);
-    if (!machine) {
-      throw new Error(`Machine id: ${id} not found`);
-    }
-    return machine;
+  findById(id: string): Machine | undefined {
+    return this.machines.find((m) => m.id === id);
   }
 }
