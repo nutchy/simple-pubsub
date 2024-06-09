@@ -1,5 +1,5 @@
 import { IEvent, ISubscriber } from "../../events";
-import { MachineEventPublisher } from "../../publisher/MachineEventPublisher";
+import { MachineEventPublisher } from "../../publishers/MachineEventPublisher";
 
 describe("MachineEventPublisher", () => {
   it("allow ISubscriber object to register for an event type", () => {

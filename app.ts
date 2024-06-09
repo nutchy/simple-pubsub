@@ -1,6 +1,6 @@
 import { IPublishSubscribeService } from "./events";
-import { MachineEventPublisher } from "./publisher/MachineEventPublisher";
-import { MachineSaleSubscriber } from "./subscriber/MachineSaleSubscriber";
+import { MachineEventPublisher } from "./publishers/MachineEventPublisher";
+import { MachineSaleSubscriber } from "./subscribers/MachineSaleSubscriber";
 import { eventGenerator } from "./helpers/generator";
 import { Machine } from "./models";
 
@@ -17,7 +17,7 @@ import { Machine } from "./models";
   const saleSubscriber = new MachineSaleSubscriber(machines);
 
   // create the PubSub service
-  const pubSubService: IPublishSubscribeService = new MachineEventPublisher();
+  const pubSubService: IPublishSubscribeService = new MachineEventPublisher({});
 
   // create 5 random events
   const events = [1, 2, 3, 4, 5].map((_) => eventGenerator());

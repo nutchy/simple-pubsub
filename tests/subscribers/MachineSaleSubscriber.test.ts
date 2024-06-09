@@ -1,7 +1,7 @@
 import { MachineSaleEvent } from "../../events";
 import { MachineNotFoundError } from "../../models";
 import { MachineRepository } from "../../repository";
-import { MachineSaleSubscriber } from "../../subscriber/MachineSaleSubscriber";
+import { MachineSaleSubscriber } from "../../subscribers/MachineSaleSubscriber";
 
 describe("MachineSaleSubscriber", () => {
   it("handle with MachineSaleEvent", () => {
