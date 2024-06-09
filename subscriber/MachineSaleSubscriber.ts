@@ -1,19 +1,27 @@
-import { MachineSaleEvent, ISubscriber } from "../events";
-import { Machine } from "../models/Machine";
+import { MachineSaleEvent, ISubscriber, IEvent } from "../events";
+import { Machine, MachineNotFoundError } from "../models";
 
-// Subscriber implementations
+interface machineRepository {
+  findById(id: string): Machine | undefined;
+}
+
 export class MachineSaleSubscriber implements ISubscriber {
-  public machines: Machine[];
-
-  constructor(machines: Machine[]) {
-    this.machines = machines;
-  }
+  constructor(private machineRepository: machineRepository) {}
 
   handle(event: MachineSaleEvent): void {
-    const machine = this.machines.find((m) => m.id === event.machineId());
-    if (machine) {
-      machine.stockLevel -= event.getSoldQuantity();
+    const machineId = event.machineId();
+
+    const machine = this.machineRepository.findById(machineId);
+    if (!machine) {
+      console.log(new MachineNotFoundError(machineId).message);
+      return
     }
-    // this.machines[2].stockLevel -= event.getSoldQuantity();
+    const newStockLevel = machine.stockLevel - event.getSoldQuantity();
+    machine.stockLevel = newStockLevel;
+
+    // Todo: change magic to constant
+    if (newStockLevel < 3) {
+      // Todo: Publish low stock level event
+    }
   }
 }
