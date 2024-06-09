@@ -35,4 +35,28 @@ describe("MachineEventPublisher", () => {
     expect(foo.handle).toHaveBeenCalledTimes(1)
     expect(bar.handle).toHaveBeenCalledTimes(0)
   });
+
+  it("unsubscribe with specific event type", () => {
+    // Mock subscribers
+    const foo = { handle: jest.fn() };
+
+    // Create concrete object with subscribable object
+    const publisher = new MachineEventPublisher({
+      foo: new Set<ISubscriber>().add(foo),
+    });
+
+    // Publish foo event
+    const event: IEvent = {
+        machineId: () => "001",
+        type: () => "foo"
+    }
+    publisher.publish(event)
+
+    expect(foo.handle).toHaveBeenCalledTimes(1)
+    foo.handle.mockClear()
+
+    publisher.unsubscribe("foo")
+    publisher.publish(event)
+    expect(foo.handle).toHaveBeenCalledTimes(0)
+  })
 });

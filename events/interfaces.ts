@@ -12,7 +12,7 @@ interface ISubscriber {
 interface IPublishSubscribeService {
   publish(event: IEvent): void;
   subscribe(type: EventType, handler: ISubscriber): void;
-  unsubscribe(type: EventType, handler: ISubscriber): void;
+  unsubscribe(type: EventType): void;
 }
 
 export { IEvent, ISubscriber, IPublishSubscribeService };
