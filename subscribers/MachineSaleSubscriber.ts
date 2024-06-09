@@ -1,12 +1,24 @@
-import { MachineSaleEvent, ISubscriber, IEvent } from "../events";
+import {
+  MachineSaleEvent,
+  ISubscriber,
+  IEvent,
+  LowStockWarningEvent,
+} from "../events";
 import { Machine, MachineNotFoundError } from "../models";
 
 interface machineRepository {
   findById(id: string): Machine | undefined;
 }
 
+interface publisher {
+  publish(event: IEvent): void;
+}
+
 export class MachineSaleSubscriber implements ISubscriber {
-  constructor(private machineRepository: machineRepository) {}
+  constructor(
+    private machineRepository: machineRepository,
+    private publisher: publisher
+  ) {}
 
   handle(event: MachineSaleEvent): void {
     const machineId = event.machineId();
@@ -14,14 +26,16 @@ export class MachineSaleSubscriber implements ISubscriber {
     const machine = this.machineRepository.findById(machineId);
     if (!machine) {
       console.log(new MachineNotFoundError(machineId).message);
-      return
+      return;
     }
     const newStockLevel = machine.stockLevel - event.getSoldQuantity();
     machine.stockLevel = newStockLevel;
 
     // Todo: change magic to constant
     if (newStockLevel < 3) {
-      // Todo: Publish low stock level event
+      this.publisher.publish(
+        new LowStockWarningEvent(machineId, newStockLevel)
+      );
     }
   }
 }

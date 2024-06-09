@@ -1,2 +1,2 @@
-export * from "./Machine";
+export * from "./machine";
 export * from "./errors"

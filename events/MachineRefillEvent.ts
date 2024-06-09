@@ -1,6 +1,6 @@
 import { IEvent } from "./interfaces";
+import { EventType } from "./type";
 
-// Todo: (3) Implement MachineRefillSubscriber. It will increase the stock quantity of the machine.
 class MachineRefillEvent implements IEvent {
   constructor(
     private readonly _refill: number,
@@ -8,11 +8,11 @@ class MachineRefillEvent implements IEvent {
   ) {}
 
   machineId(): string {
-    throw new Error("Method not implemented.");
+    return this._machineId
   }
 
-  type(): string {
-    throw new Error("Method not implemented.");
+  type(): EventType {
+    return EventType.MachineRefill
   }
 
   getRefillQuantity(): number {

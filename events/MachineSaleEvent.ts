@@ -16,7 +16,7 @@ class MachineSaleEvent implements IEvent {
   }
 
   type(): EventType {
-    return "sale"; // TODO: change to constant or Event Type
+    return EventType.MachineSale;
   }
 }
 
