@@ -1,4 +1,5 @@
 import { IEvent } from "./interfaces";
+import { EventType } from "./type";
 
 class MachineSaleEvent implements IEvent {
   constructor(
@@ -14,7 +15,7 @@ class MachineSaleEvent implements IEvent {
     return this._sold;
   }
 
-  type(): string {
+  type(): EventType {
     return "sale"; // TODO: change to constant or Event Type
   }
 }

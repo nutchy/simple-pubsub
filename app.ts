@@ -2,7 +2,7 @@ import { IPublishSubscribeService } from "./events";
 import { MachineEventPublisher } from "./publisher/MachineEventPublisher";
 import { MachineSaleSubscriber } from "./subscriber/MachineSaleSubscriber";
 import { eventGenerator } from "./helpers/generator";
-import { Machine } from "./models/Machine";
+import { Machine } from "./models";
 
 // program
 (async () => {

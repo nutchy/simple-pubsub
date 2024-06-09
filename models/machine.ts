@@ -1,4 +1,4 @@
-export class Machine {
+class Machine {
   public stockLevel = 10;
   public id: string;
 
@@ -6,3 +6,5 @@ export class Machine {
     this.id = id;
   }
 }
+
+export { Machine };
