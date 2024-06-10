@@ -1,21 +1,21 @@
-import { IEvent } from "./interfaces";
-import { EventType } from "./type";
+import { IEvent } from './interfaces'
+import { EventType } from './type'
 
 export class StockLevelOkEvent implements IEvent {
-    constructor(
-        private readonly _machineId: string,
-        private readonly _stockLevel: number
-    ){}
+  constructor(
+    private readonly _machineId: string,
+    private readonly _stockLevel: number
+  ) {}
 
-    machineId(): string {
-        return this._machineId
-    }
+  machineId(): string {
+    return this._machineId
+  }
 
-    getStockQuantity(): number{
-        return this._stockLevel
-    }
+  getStockQuantity(): number {
+    return this._stockLevel
+  }
 
-    type(): EventType {
-        return EventType.StockLevelOk
-    }
+  type(): EventType {
+    return EventType.StockLevelOk
+  }
 }

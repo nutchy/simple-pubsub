@@ -1,17 +1,18 @@
+import { appConfig } from '../configs/appConfig'
 import {
   MachineSaleEvent,
   ISubscriber,
   IEvent,
-  LowStockWarningEvent,
-} from "../events";
-import { Machine, MachineNotFoundError } from "../models";
+  LowStockWarningEvent
+} from '../events'
+import { Machine, MachineNotFoundError } from '../models'
 
 interface machineRepository {
-  findById(id: string): Machine | undefined;
+  findById(id: string): Machine | undefined
 }
 
 interface publisher {
-  publish(event: IEvent): void;
+  publish(event: IEvent): void
 }
 
 export class MachineSaleSubscriber implements ISubscriber {
@@ -21,21 +22,18 @@ export class MachineSaleSubscriber implements ISubscriber {
   ) {}
 
   handle(event: MachineSaleEvent): void {
-    const machineId = event.machineId();
+    const machineId = event.machineId()
 
-    const machine = this.machineRepository.findById(machineId);
+    const machine = this.machineRepository.findById(machineId)
     if (!machine) {
-      console.log(new MachineNotFoundError(machineId).message);
-      return;
+      console.log(new MachineNotFoundError(machineId).message)
+      return
     }
-    const newStockLevel = machine.stockLevel - event.getSoldQuantity();
-    machine.stockLevel = newStockLevel;
+    const newStockLevel = machine.stockLevel - event.getSoldQuantity()
+    machine.stockLevel = newStockLevel
 
-    // Todo: change magic to constant
-    if (newStockLevel < 3) {
-      this.publisher.publish(
-        new LowStockWarningEvent(machineId, newStockLevel)
-      );
+    if (newStockLevel < appConfig.LowStockThreshold) {
+      this.publisher.publish(new LowStockWarningEvent(machineId, newStockLevel))
     }
   }
 }

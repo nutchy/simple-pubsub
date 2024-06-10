@@ -1,12 +1,12 @@
-const DEFAULT_STOCK_LEVEL = 10
+import { appConfig } from '../configs/appConfig'
 
 class Machine {
-  public stockLevel = DEFAULT_STOCK_LEVEL;
-  public id: string;
+  public stockLevel = appConfig.DefaultStockLevel
+  public id: string
 
   constructor(id: string) {
-    this.id = id;
+    this.id = id
   }
 }
 
-export { Machine };
+export { Machine }

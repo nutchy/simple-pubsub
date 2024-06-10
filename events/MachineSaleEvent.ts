@@ -1,5 +1,5 @@
-import { IEvent } from "./interfaces";
-import { EventType } from "./type";
+import { IEvent } from './interfaces'
+import { EventType } from './type'
 
 class MachineSaleEvent implements IEvent {
   constructor(
@@ -8,16 +8,16 @@ class MachineSaleEvent implements IEvent {
   ) {}
 
   machineId(): string {
-    return this._machineId;
+    return this._machineId
   }
 
   getSoldQuantity(): number {
-    return this._sold;
+    return this._sold
   }
 
   type(): EventType {
-    return EventType.MachineSale;
+    return EventType.MachineSale
   }
 }
 
-export { MachineSaleEvent };
+export { MachineSaleEvent }

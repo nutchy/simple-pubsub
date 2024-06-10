@@ -1,5 +1,5 @@
-import { IEvent } from "./interfaces";
-import { EventType } from "./type";
+import { IEvent } from './interfaces'
+import { EventType } from './type'
 
 class MachineRefillEvent implements IEvent {
   constructor(
@@ -20,4 +20,4 @@ class MachineRefillEvent implements IEvent {
   }
 }
 
-export { MachineRefillEvent };
+export { MachineRefillEvent }
