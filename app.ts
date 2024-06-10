@@ -4,7 +4,7 @@ import { IPublishSubscribeService } from "./events";
 import { MachineEventPublisher } from "./publishers/machineEventPublisher";
 import { MachineSaleSubscriber } from "./subscribers/machineSaleSubscriber";
 import { eventGenerator } from "./helpers/generator";
-import { MachineRepository } from "./repository";
+import { MachineRepository } from "./repositories";
 import { MachineRefillSubscriber } from "./subscribers/machineRefillSubscriber";
 import { EventType } from "./events/type";
 

@@ -1,5 +1,5 @@
 import { expect } from '@jest/globals'
-import { MachineRepository } from './../../repository'
+import { MachineRepository } from '../../repositories'
 
 describe('MachineRepository', () => {
   it('should got the same instance', () => {

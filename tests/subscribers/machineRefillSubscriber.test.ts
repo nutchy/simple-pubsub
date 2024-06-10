@@ -1,5 +1,5 @@
 import { MachineRefillEvent, StockLevelOkEvent } from '../../events'
-import { MachineRepository } from '../../repository'
+import { MachineRepository } from '../../repositories'
 import { MachineRefillSubscriber } from '../../subscribers/machineRefillSubscriber'
 
 describe('MachineRefillSubscriber', () => {

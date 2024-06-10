@@ -1,5 +1,5 @@
 import { LowStockWarningEvent, MachineSaleEvent } from '../../events'
-import { MachineRepository } from '../../repository'
+import { MachineRepository } from '../../repositories'
 import { MachineSaleSubscriber } from '../../subscribers/machineSaleSubscriber'
 
 describe('MachineSaleSubscriber', () => {
