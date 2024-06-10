@@ -1,5 +1,9 @@
-import { IEvent, IPublishSubscribeService, ISubscriber } from '../events'
-import { EventType } from '../events/type'
+import {
+  EventType,
+  IEvent,
+  IPublishSubscribeService,
+  ISubscriber
+} from '../events'
 
 export class MachineEventPublisher implements IPublishSubscribeService {
   private static _instance: MachineEventPublisher

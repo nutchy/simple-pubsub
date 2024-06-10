@@ -1,6 +1,6 @@
 import { MachineRefillEvent, StockLevelOkEvent } from '../../events'
 import { MachineRepository } from '../../repositories'
-import { MachineRefillSubscriber } from '../../subscribers/machineRefillSubscriber'
+import { MachineRefillSubscriber } from '../../subscribers'
 
 describe('MachineRefillSubscriber', () => {
   it('handle with MachineRefillEvent', () => {

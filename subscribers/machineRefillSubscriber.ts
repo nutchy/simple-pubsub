@@ -26,7 +26,7 @@ export class MachineRefillSubscriber implements ISubscriber {
     const machine = this.machineRepository.findById(machineId)
 
     if (!machine) {
-      console.log(new MachineNotFoundError(machineId))
+      console.log(new MachineNotFoundError(machineId).message)
       return
     }
 

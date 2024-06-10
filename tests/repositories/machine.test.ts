@@ -1,4 +1,5 @@
 import { expect } from '@jest/globals'
+
 import { MachineRepository } from '../../repositories'
 
 describe('MachineRepository', () => {

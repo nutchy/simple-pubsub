@@ -15,4 +15,4 @@ interface IPublishSubscribeService {
   unsubscribe(type: EventType): void
 }
 
-export { IEvent, ISubscriber, IPublishSubscribeService }
+export type { IEvent, ISubscriber, IPublishSubscribeService }
